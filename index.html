@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprendiz de Sucesso</title>
+<style>
+  body {
+    background: linear-gradient(180deg, #06142e 0%, #010a17 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background: #0f213a;
+    text-align: center;
+    padding: 20px 10px;
+    border-bottom: 3px solid #f4c542;
+  }
+
+  header h1 {
+    margin: 0;
+    color: #f4c542;
+    font-size: 2rem;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #102542;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00000066;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  .rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    font-size: 2rem;
+    color: #555;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: #f4c542;
+  }
+
+  button {
+    background: #f4c542;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 0 auto;
+    color: #000;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background: #ffe074;
+  }
+
+  .resultados {
+    margin-top: 40px;
+  }
+
+  .empresa-item {
+    background: #0c1b33;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .empresa-item h3 {
+    margin: 0 0 5px;
+    color: #f4c542;
+  }
+
+  .nota {
+    font-size: 0.95rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Aprendiz de Sucesso</h1>
+  <p>Avaliação dos jurados</p>
+</header>
+
+<div class="container">
+  <h2>Avalie a Empresa</h2>
+
+  <label>Nome da empresa:</label>
+  <input type="text" id="empresa" placeholder="Digite o nome da empresa...">
+
+  <h3>Inovação</h3>
+  <div class="rating" id="inovacao">
+    <input type="radio" name="inovacao" id="i5" value="5"><label for="i5">★</label>
+    <input type="radio" name="inovacao" id="i4" value="4"><label for="i4">★</label>
+    <input type="radio" name="inovacao" id="i3" value="3"><label for="i3">★</label>
+    <input type="radio" name="inovacao" id="i2" value="2"><label for="i2">★</label>
+    <input type="radio" name="inovacao" id="i1" value="1"><label for="i1">★</label>
+  </div>
+
+  <h3>Criatividade</h3>
+  <div class="rating" id="criatividade">
+    <input type="radio" name="criatividade" id="c5" value="5"><label for="c5">★</label>
+    <input type="radio" name="criatividade" id="c4" value="4"><label for="c4">★</label>
+    <input type="radio" name="criatividade" id="c3" value="3"><label for="c3">★</label>
+    <input type="radio" name="criatividade" id="c2" value="2"><label for="c2">★</label>
+    <input type="radio" name="criatividade" id="c1" value="1"><label for="c1">★</label>
+  </div>
+
+  <button onclick="salvarAvaliacao()">Salvar Avaliação</button>
+
+  <div class="resultados" id="resultados"></div>
+</div>
+
+<script>
+function salvarAvaliacao() {
+  const nome = document.getElementById('empresa').value;
+  const inovacao = document.querySelector('input[name="inovacao"]:checked');
+  const criatividade = document.querySelector('input[name="criatividade"]:checked');
+  const resultados = document.getElementById('resultados');
+
+  if (!nome || !inovacao || !criatividade) {
+    alert('Preencha todos os campos antes de salvar!');
+    return;
+  }
+
+  const empresaDiv = document.createElement('div');
+  empresaDiv.classList.add('empresa-item');
+  empresaDiv.innerHTML = `
+    <h3>${nome}</h3>
+    <p class="nota">Inovação: ${inovacao.value} ★</p>
+    <p class="nota">Criatividade: ${criatividade.value} ★</p>
+  `;
+  resultados.appendChild(empresaDiv);
+
+  document.getElementById('empresa').value = '';
+  document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+}
+</script>
+
+</body>
+</html>
