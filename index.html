@@ -6,93 +6,91 @@
 <title>Aprendiz de Sucesso</title>
 <style>
   body {
-    background: linear-gradient(180deg, #06142e 0%, #010a17 100%);
+    background: linear-gradient(180deg, #091833 0%, #010a17 100%);
     font-family: 'Poppins', sans-serif;
     color: #fff;
     margin: 0;
     padding: 0;
+    text-align: center;
   }
 
   header {
     background: #0f213a;
-    text-align: center;
-    padding: 20px 10px;
+    padding: 25px 10px;
     border-bottom: 3px solid #f4c542;
   }
 
   header h1 {
     margin: 0;
     color: #f4c542;
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .container {
-    max-width: 700px;
-    margin: 40px auto;
+    max-width: 800px;
+    margin: 50px auto;
     background: #102542;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #00000066;
-  }
-
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #00000088;
   }
 
   label {
     display: block;
-    margin: 10px 0 5px;
+    margin: 20px 0 10px;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
   input[type="text"] {
-    width: 100%;
-    padding: 10px;
+    width: 80%;
+    padding: 12px;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
+    text-align: center;
   }
 
-  .rating {
+  .nota-box {
     display: flex;
     justify-content: center;
-    margin: 10px 0 20px;
+    gap: 15px;
+    margin: 20px 0 40px;
   }
 
-  .rating input {
-    display: none;
-  }
-
-  .rating label {
-    font-size: 2rem;
-    color: #555;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .rating input:checked ~ label,
-  .rating label:hover,
-  .rating label:hover ~ label {
+  .nota-btn {
+    background: #0c1b33;
+    border: 2px solid #f4c542;
     color: #f4c542;
+    font-size: 2rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+
+  .nota-btn:hover, .nota-btn.selected {
+    background: #f4c542;
+    color: #0c1b33;
+    transform: scale(1.1);
   }
 
   button {
     background: #f4c542;
     border: none;
-    padding: 10px 25px;
-    font-size: 1rem;
+    padding: 12px 30px;
+    font-size: 1.2rem;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
-    display: block;
-    margin: 0 auto;
     color: #000;
     font-weight: bold;
   }
 
   button:hover {
-    background: #ffe074;
+    background: #ffe075;
   }
 
   .resultados {
@@ -100,51 +98,56 @@
   }
 
   .empresa-item {
-    background: #0c1b33;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    background: #0b1730;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px auto;
+    max-width: 500px;
+    border: 2px solid #f4c542;
   }
 
   .empresa-item h3 {
-    margin: 0 0 5px;
+    margin: 0 0 10px;
     color: #f4c542;
   }
 
-  .nota {
-    font-size: 0.95rem;
+  .nota-grande {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 5px 0;
   }
+
 </style>
 </head>
 <body>
 
 <header>
   <h1>Aprendiz de Sucesso</h1>
-  <p>Avaliação dos jurados</p>
+  <p>Avaliação dos Jurados</p>
 </header>
 
 <div class="container">
-  <h2>Avalie a Empresa</h2>
-
-  <label>Nome da empresa:</label>
+  <label>Nome da Empresa</label>
   <input type="text" id="empresa" placeholder="Digite o nome da empresa...">
 
-  <h3>Inovação</h3>
-  <div class="rating" id="inovacao">
-    <input type="radio" name="inovacao" id="i5" value="5"><label for="i5">★</label>
-    <input type="radio" name="inovacao" id="i4" value="4"><label for="i4">★</label>
-    <input type="radio" name="inovacao" id="i3" value="3"><label for="i3">★</label>
-    <input type="radio" name="inovacao" id="i2" value="2"><label for="i2">★</label>
-    <input type="radio" name="inovacao" id="i1" value="1"><label for="i1">★</label>
+  <label>Inovação</label>
+  <div class="nota-box" id="inovacao">
+    <button class="nota-btn">0</button>
+    <button class="nota-btn">1</button>
+    <button class="nota-btn">2</button>
+    <button class="nota-btn">3</button>
+    <button class="nota-btn">4</button>
+    <button class="nota-btn">5</button>
   </div>
 
-  <h3>Criatividade</h3>
-  <div class="rating" id="criatividade">
-    <input type="radio" name="criatividade" id="c5" value="5"><label for="c5">★</label>
-    <input type="radio" name="criatividade" id="c4" value="4"><label for="c4">★</label>
-    <input type="radio" name="criatividade" id="c3" value="3"><label for="c3">★</label>
-    <input type="radio" name="criatividade" id="c2" value="2"><label for="c2">★</label>
-    <input type="radio" name="criatividade" id="c1" value="1"><label for="c1">★</label>
+  <label>Criatividade</label>
+  <div class="nota-box" id="criatividade">
+    <button class="nota-btn">0</button>
+    <button class="nota-btn">1</button>
+    <button class="nota-btn">2</button>
+    <button class="nota-btn">3</button>
+    <button class="nota-btn">4</button>
+    <button class="nota-btn">5</button>
   </div>
 
   <button onclick="salvarAvaliacao()">Salvar Avaliação</button>
@@ -153,14 +156,31 @@
 </div>
 
 <script>
+let notaInovacao = null;
+let notaCriatividade = null;
+
+document.querySelectorAll('#inovacao .nota-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#inovacao .nota-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    notaInovacao = btn.textContent;
+  });
+});
+
+document.querySelectorAll('#criatividade .nota-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#criatividade .nota-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    notaCriatividade = btn.textContent;
+  });
+});
+
 function salvarAvaliacao() {
   const nome = document.getElementById('empresa').value;
-  const inovacao = document.querySelector('input[name="inovacao"]:checked');
-  const criatividade = document.querySelector('input[name="criatividade"]:checked');
   const resultados = document.getElementById('resultados');
 
-  if (!nome || !inovacao || !criatividade) {
-    alert('Preencha todos os campos antes de salvar!');
+  if (!nome || notaInovacao === null || notaCriatividade === null) {
+    alert('Preencha todos os campos e notas!');
     return;
   }
 
@@ -168,13 +188,16 @@ function salvarAvaliacao() {
   empresaDiv.classList.add('empresa-item');
   empresaDiv.innerHTML = `
     <h3>${nome}</h3>
-    <p class="nota">Inovação: ${inovacao.value} ★</p>
-    <p class="nota">Criatividade: ${criatividade.value} ★</p>
+    <p class="nota-grande">Inovação: ${notaInovacao}</p>
+    <p class="nota-grande">Criatividade: ${notaCriatividade}</p>
   `;
   resultados.appendChild(empresaDiv);
 
+  // Limpar para próxima empresa
   document.getElementById('empresa').value = '';
-  document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+  document.querySelectorAll('.nota-btn').forEach(b => b.classList.remove('selected'));
+  notaInovacao = null;
+  notaCriatividade = null;
 }
 </script>
 
